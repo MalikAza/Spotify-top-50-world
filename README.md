@@ -2,6 +2,14 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Installation
+*You must install [Node.JS](https://nodejs.org/) & [NPM](https://www.npmjs.com/) to run this project.*
+```bash
+git clone https://github.com/MalikAza/React-simple-interface.git
+cd React-simple-interface/
+npm install
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
