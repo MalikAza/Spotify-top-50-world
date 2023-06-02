@@ -5,13 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ErrorPage from './routes/error';
+import Album from './components/album';
 
 const ROUTER = createBrowserRouter([
   {
-  path: '/',
-  element: <App />,
-  errorElement: <ErrorPage />
+    path: '/',
+    element: <App />,
+    errorElement: <ErrorPage />
   },
+  {
+    path: 'albums/:albumId',
+    element: <Album />
+  }
 ])
 
 const root = ReactDOM.createRoot(
