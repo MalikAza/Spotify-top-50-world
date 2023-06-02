@@ -67,7 +67,13 @@ const AlbumList: React.FC = () => {
       <Link to={`albums/${album.id}`} state={{album}} className="album" key={album.id}>
         <img src={album.images[0].url} alt={album.name} className="album-img"/>
         <p className="album-name">{album.name}</p>
-        <p className="artists-names">{album.artists.map((artist) => {return artist.name}).join(', ')}</p>
+        <p className="artists-names">{album.artists.map((artist, index) => {
+          return (<>
+          <Link to={`artists/${artist.id}`} state={{artist}} className="artist-link">{artist.name}</Link>
+          {index < album.artists.length-1 && <span>, </span>}
+          </>
+          )
+          })}</p>
       </Link>
     )
   })

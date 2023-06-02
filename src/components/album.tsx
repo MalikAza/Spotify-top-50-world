@@ -5,7 +5,6 @@ import { Link } from "react-router-dom"
 const Album: React.FC = () => {
   const { state } = useLocation()
   const album: AlbumModel = state.album
-  console.log(album)
 
   return (
     <div className="album-page">

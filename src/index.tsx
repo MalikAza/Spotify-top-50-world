@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ErrorPage from './routes/error';
 import Album from './components/album';
+import Artist from './components/artist';
 
 const ROUTER = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const ROUTER = createBrowserRouter([
   {
     path: 'albums/:albumId',
     element: <Album />
+  },
+  {
+    path: 'artists/:artistId',
+    element: <Artist />
   }
 ])
 

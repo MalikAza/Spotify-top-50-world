@@ -1,8 +1,10 @@
 export default interface SpotifyArtistModel {
-    external_urls: JSON,
-    href: string,
-    id: string,
-    name: string,
-    type: string,
-    uri: string
+  external_urls: {
+    spotify: string
+  }
+  href: string,
+  id: string,
+  name: string,
+  type: string,
+  uri: string
 }
