@@ -21,11 +21,11 @@ const Album: React.FC = () => {
         <p>Total tracks: {album.total_tracks}</p>
         <p>Listen on <a href={album.external_urls.spotify} target="_blank" className="spotify-link">Spotify</a></p>
       </div>
-      <button className="homepage-btn">
-        <Link to={'/'}>
+      <Link to={'/'}>
+        <button className="homepage-btn">
           <span>Return to Homepage</span>
-        </Link>
-      </button>
+        </button>
+      </Link>
     </div>
   )
 }
