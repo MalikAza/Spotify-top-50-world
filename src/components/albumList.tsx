@@ -3,11 +3,11 @@ import SpotifyItem from "../models/spotifyItemModel"
 import AlbumModel from "../models/albumModel"
 import resetToken from "../funcs/spotifyToken"
 import axios from 'axios'
-import * as spotifyConfig from '../spotifyConfig'
 
 const AlbumList: React.FC = () => {
   const [albums, setAlbums] = useState([])
-  const [token, setToken] = useState(spotifyConfig.TOKEN)
+  const [token, setToken] = useState('') // the token is generated each time the app is launched
+  // TODO : Change this problem ^
 
   useEffect(() => {
     function getAlbums() {
@@ -26,7 +26,6 @@ const AlbumList: React.FC = () => {
         headers: HEADERS
       })
       
-      // Doesn't work yet
       axiosInstance.interceptors.response.use((response) => {
         return response
       }, (error) => {
@@ -52,6 +51,7 @@ const AlbumList: React.FC = () => {
           console.error(error)
         })
           .then((json) => {
+            if (typeof json === 'undefined') return []
             return json.tracks.items.map((item: SpotifyItem) => {
               return item.track.album
             })
