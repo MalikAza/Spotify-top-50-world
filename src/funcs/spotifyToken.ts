@@ -1,4 +1,3 @@
-import axios from 'axios'
 import * as spotifyConfig from '../spotifyConfig'
 
 export default function resetToken() {
