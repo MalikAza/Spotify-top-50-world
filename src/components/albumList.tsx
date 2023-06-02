@@ -3,7 +3,7 @@ import SpotifyItem from "../models/spotifyItemModel"
 import AlbumModel from "../models/albumModel"
 import resetToken from "../funcs/spotifyToken"
 import axios from 'axios'
-import * as spotifyConfig from '../spotify.config'
+import * as spotifyConfig from '../spotifyConfig'
 
 const AlbumList: React.FC = () => {
   const [albums, setAlbums] = useState([])

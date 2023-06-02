@@ -1,5 +1,5 @@
 import axios from 'axios'
-import * as spotifyConfig from '../spotify.config'
+import * as spotifyConfig from '../spotifyConfig'
 
 export default function resetToken() {
   const URL = 'https://accounts.spotify.com/api/token'
