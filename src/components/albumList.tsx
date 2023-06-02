@@ -7,6 +7,7 @@ import { Link } from "react-router-dom"
 
 const AlbumList: React.FC = () => {
   const [albums, setAlbums] = useState([])
+  const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
     function getAlbums() {
@@ -56,9 +57,13 @@ const AlbumList: React.FC = () => {
               return item.track.album
             })
           })
-            .then((albums) => setAlbums(albums))
+            .then((albums) => {
+              setAlbums(albums)
+              setIsLoaded(true)
+            })
     }
 
+    // setTimeout(() => getAlbums(), 500)
     getAlbums()
   }, [])
 
@@ -78,9 +83,14 @@ const AlbumList: React.FC = () => {
   })
 
   return (
-    <div className="album-list">
-      {albumList}
-    </div>
+    <>
+      {!isLoaded && <div className="loading">
+        <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+      </div>}
+      <div className="album-list">
+        {albumList}
+      </div>
+    </>
   )
 }
 
