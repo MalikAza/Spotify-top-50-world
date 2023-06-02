@@ -8,7 +8,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 git clone https://github.com/MalikAza/React-simple-interface.git
 cd React-simple-interface/
 npm install
+cp spotifyConfig.example.ts src/spotifyConfig.ts
 ```
+You need to change the spotifyConfig.ts to put your Spotify's App ID & Secret.
 
 ## Available Scripts
 
