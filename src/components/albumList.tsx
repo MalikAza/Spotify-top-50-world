@@ -71,9 +71,8 @@ const AlbumList: React.FC = () => {
           return (<>
           <Link to={`artists/${artist.id}`} state={{artist}} className="artist-link">{artist.name}</Link>
           {index < album.artists.length-1 && <span>, </span>}
-          </>
-          )
-          })}</p>
+          </>)
+        })}</p>
       </Link>
     )
   })

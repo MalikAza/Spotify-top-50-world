@@ -12,7 +12,7 @@ const ROUTER = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <ErrorPage />
+    errorElement: <ErrorPage />,
   },
   {
     path: 'albums/:albumId',

@@ -10,9 +10,11 @@ const Artist: React.FC = () => {
     <>
       <p>Name: {artist.name}</p>
       <a href={artist.external_urls.spotify} target="_blank">On Spotify</a>
-      <div className="homepage-btn">
-        <Link to={'/'}>Return to Homepage</Link> 
-      </div>
+      <button className="homepage-btn">
+        <Link to={'/'}>
+          <span>Return to Homepage</span>
+        </Link>
+      </button>
     </>
   )
 }
