@@ -1,3 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+
 .App {
   margin: 1%;
+  padding-top: 1.352vw;
+}
+
+h1 {
+  padding-bottom: 1.352vw;
+  text-align: center;
+  font-family: 'Comfortaa', cursive;
+  color: rgb(58, 121, 62)
+}
+
+.album-list {
+  margin: 0, auto;
+  display: flex;
+  flex-direction: row;
+  gap: 2%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.album {
+  cursor: pointer;
+  background: none;
+  border: none;
+  height: fit-content;
+  width: fit-content;
+  transition: 400ms ease-out;
+  margin-bottom: 5.208vw;
+  width: 15vw;
+}
+
+.album:hover {
+  transform: translateY(-0.521vw);
+}
+
+.album-img {
+  width: 15vw;
+  height: 15vw;
+  border-radius: 1.042vw;
+  box-shadow: 0px 5px 10px lightslategray;
+}
+
+.album-name, .artists-names {
+  text-align: start;
+  overflow-wrap: break-word;
+}
+
+.artists-names {
+  font-style: italic;
+  font-size: small;
+  color: rgb(58, 121, 62);
 }
