@@ -7,12 +7,11 @@ import { Link } from "react-router-dom"
 
 const AlbumList: React.FC = () => {
   const [albums, setAlbums] = useState([])
-  const [token, setToken] = useState('') // the token is generated each time the app is launched
-  // TODO : Change this problem ^
 
   useEffect(() => {
     function getAlbums() {
       const tokenError = [400, 401, 403]
+      const token = sessionStorage.getItem('spotify_token')
       const URL = 'https://api.spotify.com/v1/playlists/37i9dQZEVXbMDoHDwVN2tF'
       const CONFIG = {
         headers: {
@@ -37,7 +36,7 @@ const AlbumList: React.FC = () => {
           originalRequest._retry = true
 
           return resetToken().then((newToken) => {
-            setToken(newToken)
+            sessionStorage.setItem('spotify_token', newToken)
             originalRequest.headers.Authorization = `Bearer ${token}`
 
             return axiosInstance(originalRequest)
@@ -61,7 +60,7 @@ const AlbumList: React.FC = () => {
     }
 
     getAlbums()
-  }, [token])
+  }, [])
 
   const albumList = albums.map((album: AlbumModel) => {
     return (
