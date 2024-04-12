@@ -5,8 +5,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Installation
 *You must install [Node.JS](https://nodejs.org/) & [NPM](https://www.npmjs.com/) to run this project.*
 ```bash
-git clone https://github.com/MalikAza/React-simple-interface.git
-cd React-simple-interface/
+git clone https://github.com/MalikAza/Spotify-top-50-world.git
+cd Spotify-top-50-world/
 npm install
 cp spotifyConfig.example.ts src/spotifyConfig.ts
 ```
