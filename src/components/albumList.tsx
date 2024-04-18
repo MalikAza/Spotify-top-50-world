@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import SpotifyItem from "../models/spotifyItemModel"
 import AlbumModel from "../models/albumModel"
 import { Link } from "react-router-dom"
-import axiosInstance from "../funcs/axiosInstacne"
+import axiosInstance from "../funcs/axiosInstance"
 
 const AlbumList: React.FC = () => {
   const [albums, setAlbums] = useState([])
