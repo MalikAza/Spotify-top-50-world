@@ -41,19 +41,23 @@ const AlbumList: React.FC = () => {
   }, [])
 
   const albumList = albums.map((album: AlbumModel) => {
-    return (
-      <Link to={`albums/${album.id}`} state={{album}} className="album" key={album.id}>
+  return (
+    <div className="album" key={album.id}>
+      <Link to={`albums/${album.id}`} state={{album}} >
         <img src={album.images[0].url} alt={album.name} className="album-img"/>
         <p className="album-name">{album.name}</p>
-        <p className="artists-names">{album.artists.map((artist, index) => {
-          return (<React.Fragment key={artist.id}>
-          <Link to={`artists/${artist.id}`} state={{artist}} className="artist-link">{artist.name}</Link>
-          {index < album.artists.length-1 && <span>, </span>}
-          </React.Fragment>)
-        })}</p>
       </Link>
-    )
-  })
+      <p className="artists-names">{album.artists.map((artist, index) => {
+        return (
+          <React.Fragment key={artist.id}>
+            <Link to={`artists/${artist.id}`} state={{artist}} className="artist-link">{artist.name}</Link>
+            {index < album.artists.length-1 && <span>, </span>}
+          </React.Fragment>
+        )
+      })}</p>
+    </div>
+  )
+})
 
   return (
     <>

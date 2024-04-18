@@ -102,6 +102,10 @@ h1 {
   transform: translateY(-0.521vw);
 }
 
+.album a {
+  text-decoration: none;
+}
+
 .album-img, .album-page-img {
   height: 15vw;
   border-radius: 1.042vw;
