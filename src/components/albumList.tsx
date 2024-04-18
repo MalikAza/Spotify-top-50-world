@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import SpotifyItem from "../models/spotifyItemModel"
 import AlbumModel from "../models/albumModel"
 import { Link } from "react-router-dom"
@@ -46,10 +46,10 @@ const AlbumList: React.FC = () => {
         <img src={album.images[0].url} alt={album.name} className="album-img"/>
         <p className="album-name">{album.name}</p>
         <p className="artists-names">{album.artists.map((artist, index) => {
-          return (<>
+          return (<React.Fragment key={artist.id}>
           <Link to={`artists/${artist.id}`} state={{artist}} className="artist-link">{artist.name}</Link>
           {index < album.artists.length-1 && <span>, </span>}
-          </>)
+          </React.Fragment>)
         })}</p>
       </Link>
     )
