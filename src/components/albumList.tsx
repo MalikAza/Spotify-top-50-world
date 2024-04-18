@@ -24,7 +24,7 @@ const AlbumList: React.FC = () => {
           console.error(error)
         })
           .then((json) => {
-            console.log(json)
+            // console.log('JSON:', json)
             if (typeof json === 'undefined') return []
             return json.tracks.items.map((item: SpotifyItem) => {
               return item.track.album

@@ -21,7 +21,7 @@ axiosInstance.interceptors.response.use((response) => {
 
     return resetToken().then((newToken) => {
       sessionStorage.setItem('spotify_token', newToken)
-      originalRequest.headers.Authorization = `Bearer ${token}`
+      originalRequest.headers.Authorization = `Bearer ${newToken}`
 
       return axiosInstance(originalRequest)
     })
