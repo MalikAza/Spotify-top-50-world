@@ -1,22 +1,72 @@
 import { useLocation } from "react-router-dom"
 import SpotifyArtistModel from "../models/spotifyArtistModel"
+import React, { useCallback, useEffect, useState } from "react"
+import axiosInstance from "../services/axiosInstance"
+import SpotifyFetchedArtistModel from "../models/spotifyFetchedArtistModel"
 import { Link } from "react-router-dom"
 
 function Artist() {
   const { state } = useLocation()
   const artist: SpotifyArtistModel = state.artist
-  console.log(artist)
+  const [artistData, setArtistData] = useState<SpotifyFetchedArtistModel>()
   
+  const getArtistData = useCallback(async () => {
+    const token = sessionStorage.getItem('spotify_token')
+    const CONFIG = {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    }
+
+    try {
+      const response = await axiosInstance.get(artist.href, CONFIG)
+      setArtistData(response.data)
+    } catch (error) {
+      console.error(error)
+    }
+  }, [artist])
+
+  useEffect(() => {
+    if (artist) {
+      getArtistData()
+    }
+  }, [getArtistData, artist])
+
   return (
-    <>
-      <p>Name: {artist.name}</p>
-      <a href={artist.external_urls.spotify} target="_blank" rel="noreferrer">On Spotify</a>
-      <button className="homepage-btn">
-        <Link to={'/'}>
+    <div className="artist-page">
+      <h1>{artistData?.name}</h1>
+      <iframe
+        style={{border: 'none', borderRadius: '14px'}}
+        src={`https://open.spotify.com/embed/artist/${artistData?.id}?utm_source=generator`}
+        width="100%"
+        height="152"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+        title="Spotify Artist Embed"
+      />
+      <div className="artist-page-infos">
+        <p>
+          Genre(s):
+          {
+            artistData?.genres.map((genre, index) => {
+              return (
+                <React.Fragment key={index}>
+                  <span> {genre}</span>
+                  {index < artistData.genres.length-1 && <span>,</span>}
+                </React.Fragment>
+              )
+            })
+          }
+        </p>
+        <p>Followers: {artistData?.followers.total}</p>
+        <p>Listen on <a href={artist.external_urls.spotify} target="_blank" rel="noreferrer" className="spotify-link">Spotify</a></p>
+      </div>
+      <Link to={'/'}>
+        <button className="homepage-btn">
           <span>Return to Homepage</span>
-        </Link>
-      </button>
-    </>
+        </button>
+      </Link>
+    </div>
   )
 }
 export default Artist
