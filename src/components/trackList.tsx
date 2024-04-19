@@ -45,15 +45,22 @@ function TrackList() {
       setTracks(trackData)
     } catch (error) {
       console.error(error)
-    } finally {
-      setIsLoaded(true)
     }
   }, [albumDataTracks])
 
   useEffect(() => {
     getAlbumDataTracks()
-      .then(() => getTracks())
-  }, [getTracks])
+  }, [])
+
+  useEffect(() => {
+    if (albumDataTracks.length > 0) { getTracks() }
+  }, [getTracks, albumDataTracks])
+
+  useEffect(() => {
+    if (tracks.length > 0) {
+      setIsLoaded(true)
+    }
+  }, [tracks])
 
   return (
     <>
