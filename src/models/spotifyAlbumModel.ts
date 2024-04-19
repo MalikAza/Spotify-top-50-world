@@ -1,6 +1,6 @@
 import SpotifyArtistModel from "./spotifyArtistModel";
 
-export default interface AlbumModel {
+export default interface SpotifyAlbumModel {
   artists: Array<SpotifyArtistModel>,
   external_urls: {
     spotify: string

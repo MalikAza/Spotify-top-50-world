@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react"
-import axiosInstance from "../funcs/axiosInstance"
+import axiosInstance from "../services/axiosInstance"
 import SpotifyItem from "../models/spotifyItemModel"
-import TrackFetchModel from "../models/trackFetchModel"
+import SpotifyTrackModel from "../models/spotifyTrackModel"
 import { Link } from "react-router-dom"
 
 function TrackList() {
   const [albumDataTracks, setAlbumDataTracks] = useState<SpotifyItem['track'][]>([])
-  const [tracks, setTracks] = useState<TrackFetchModel[]>([])
+  const [tracks, setTracks] = useState<SpotifyTrackModel[]>([])
   const [isLoaded, setIsLoaded] = useState(false)
 
   async function getAlbumDataTracks() {
@@ -38,7 +38,7 @@ function TrackList() {
     try {
       const trackPromises = albumDataTracks.map(async (track) => {
         const response = await axiosInstance.get(track.href, CONFIG)
-        return response.data as TrackFetchModel
+        return response.data as SpotifyTrackModel
       })
 
       const trackData = await Promise.all(trackPromises)

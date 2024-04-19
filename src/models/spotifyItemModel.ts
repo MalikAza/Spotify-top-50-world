@@ -1,8 +1,8 @@
-import AlbumModel from "./albumModel"
+import SpotifyAlbumModel from "./spotifyAlbumModel"
 
 export default interface SpotifyItem {
     track: {
-        album: AlbumModel
+        album: SpotifyAlbumModel
         href: string
         id: string
         name: string

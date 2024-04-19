@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
-import './App.css';
-import TrackList from './components/trackList';
+import '../css/home.css';
+import TrackList from '../components/trackList';
 
-function App() {
+function Home() {
   const titleRef = useRef(null)
 
   useEffect(() => {
@@ -20,11 +20,11 @@ function App() {
   });
 
   return (
-    <div className='App'>
+    <div className='home'>
       <h1 ref={titleRef}>Top 50 World</h1>
       <TrackList />
     </div>
   )
 }
 
-export default App;
+export default Home;

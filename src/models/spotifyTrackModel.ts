@@ -1,8 +1,8 @@
-import AlbumModel from "./albumModel";
+import SpotifyAlbumModel from "./spotifyAlbumModel";
 import SpotifyArtistModel from "./spotifyArtistModel";
 
-export default interface TrackFetchModel {
-  album: AlbumModel
+export default interface SpotifyTrackModel {
+  album: SpotifyAlbumModel
   artists: SpotifyArtistModel[]
   duration_ms: number
   explicit: boolean
