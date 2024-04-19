@@ -8,9 +8,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 git clone https://github.com/MalikAza/Spotify-top-50-world.git
 cd Spotify-top-50-world/
 npm install
-cp spotifyConfig.example.ts src/spotifyConfig.ts
+cp .env.example .env
 ```
-You need to change the spotifyConfig.ts to put your Spotify's App ID & Secret.
+Adds your Spotify Client Credentials (ID and Secret) in the .env file. (From you App Settings in your [Spotify Dashboard](https://developer.spotify.com/dashboard))
 
 ## Available Scripts
 
