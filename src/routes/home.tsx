@@ -14,7 +14,7 @@ function Home() {
 
       const trackContainer = document.querySelector('.track-container') as HTMLElement;
       if (trackContainer) {
-        trackContainer.style.paddingTop = `${titleHeight}px`
+        trackContainer.style.paddingTop = `${titleHeight+10}px`
       }
     }
   });
