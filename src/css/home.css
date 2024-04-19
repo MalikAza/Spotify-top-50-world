@@ -146,7 +146,7 @@
   margin: 5px 0;
 }
 
-.album-img, .track-page-img {
+.album-img {
   height: 15vw;
   border-radius: 1.042vw;
   box-shadow: 0px 5px 10px lightslategray;
@@ -177,18 +177,14 @@
 
 /* ===== TRACK PAGE ===== */
 
-.track-page {
+.track-page, .artist-page {
   margin: 1%;
   padding-top: 1.352vw;
   justify-content: center;
   text-align: center;
 }
 
-.track-page-img {
-  text-align: center;
-}
-
-.track-page-infos {
+.track-page-infos, .artist-page-infos {
   width: 20vw;
   margin: auto;
 }
@@ -222,4 +218,33 @@
 
 .spotify-link:hover {
   text-decoration: underline;
+}
+
+.artist-genre {
+  background-color: rgb(58, 121, 62);
+  color: lightgray;
+  border-radius: 25px;
+  padding: 5px 10px 5px 2.5px;
+  width: fit-content;
+}
+
+.genre-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.genre-container li {
+  list-style-type: none;
+}
+
+.genre-container li span {
+  background-color: rgb(98, 202, 105);
+  padding: 2.5px 7px;
+  border-radius: 50%;
+  color: black;
+  margin-right: 3px;
 }

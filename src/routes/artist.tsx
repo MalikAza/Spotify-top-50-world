@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom"
 import SpotifyArtistModel from "../models/spotifyArtistModel"
-import React, { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import axiosInstance from "../services/axiosInstance"
 import SpotifyFetchedArtistModel from "../models/spotifyFetchedArtistModel"
 import { Link } from "react-router-dom"
@@ -35,6 +35,15 @@ function Artist() {
   return (
     <div className="artist-page">
       <h1>{artistData?.name}</h1>
+      <ul className="genre-container">
+        {
+          artistData?.genres.map((genre, index) => {
+            return (
+              <li className="artist-genre" key={index}><span>#</span>{genre}</li>
+            )
+          })
+        }
+      </ul>
       <iframe
         style={{border: 'none', borderRadius: '14px'}}
         src={`https://open.spotify.com/embed/artist/${artistData?.id}?utm_source=generator`}
@@ -45,20 +54,7 @@ function Artist() {
         title="Spotify Artist Embed"
       />
       <div className="artist-page-infos">
-        <p>
-          Genre(s):
-          {
-            artistData?.genres.map((genre, index) => {
-              return (
-                <React.Fragment key={index}>
-                  <span> {genre}</span>
-                  {index < artistData.genres.length-1 && <span>,</span>}
-                </React.Fragment>
-              )
-            })
-          }
-        </p>
-        <p>Followers: {artistData?.followers.total}</p>
+        <p>Followers: {artistData?.followers.total.toLocaleString()}</p>
         <p>Listen on <a href={artist.external_urls.spotify} target="_blank" rel="noreferrer" className="spotify-link">Spotify</a></p>
       </div>
       <Link to={'/'}>
