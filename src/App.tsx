@@ -1,11 +1,11 @@
 import './App.css';
-import AlbumList from './components/albumList';
+import TrackList from './components/trackList';
 
 function App() {
   return (
     <div className='App'>
       <h1>Top 50 World</h1>
-      <AlbumList />
+      <TrackList />
     </div>
   )
 }

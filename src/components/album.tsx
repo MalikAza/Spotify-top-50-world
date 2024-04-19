@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom"
 import AlbumModel from "../models/albumModel"
 import { Link } from "react-router-dom"
-import { Dispatch, SetStateAction, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import axiosInstance from "../funcs/axiosInstance"
 import AlbumFetchModel from "../models/albumFetchModel"
 
