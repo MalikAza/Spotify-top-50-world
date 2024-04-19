@@ -77,7 +77,7 @@
 
 .loading {
   position: absolute;
-  top: 50%;
+  top: 25%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -124,14 +124,24 @@
   margin-bottom: 5.208vw;
   width: 15vw;
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
 }
 
 .album:hover, .track:hover {
   transform: translateY(-0.521vw);
 }
 
+.album > a, .track > a {
+  flex-grow: 1;
+}
+
 .album a, .track a {
   text-decoration: none;
+}
+
+.album p, .track p {
+  margin: 5px 0;
 }
 
 .album-img, .album-page-img {
