@@ -1,15 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
 
 .App {
-  margin: 1%;
-  padding-top: 1.352vw;
+  margin: 0;
 }
 
-h1 {
-  padding-bottom: 1.352vw;
+.App h1 {
+  margin: 20px 0;
   text-align: center;
   font-family: 'Comfortaa', cursive;
-  color: rgb(58, 121, 62)
+  color: rgb(58, 121, 62);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
 }
 
 /* ===== V LOADING ANIMATION V ===== */
@@ -71,11 +76,23 @@ h1 {
 }
 
 .loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
   padding-top: 10%;
+
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
 }
 
 /* ===== ^ LOADING ANIMATION ^ ===== */
+
+.track-container {
+  position: relative;
+  min-height: 100vh;
+}
 
 .album-list, .track-list {
   margin: 0, auto;
@@ -84,6 +101,17 @@ h1 {
   gap: 2%;
   flex-wrap: wrap;
   justify-content: center;
+
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+}
+
+.loaded .loading {
+  opacity: 0;
+}
+
+.loaded .track-list {
+  opacity: 1;
 }
 
 .album, .track {

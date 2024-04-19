@@ -63,10 +63,11 @@ function TrackList() {
   }, [tracks])
 
   return (
-    <>
-      {!isLoaded && <div className="loading">
+    <div className={`track-container ${isLoaded ? 'loaded': ''}`}>
+      <div className="loading">
         <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-      </div>}
+      </div>
+
       <div className="track-list">
         {
           tracks.map(track => {
@@ -90,7 +91,7 @@ function TrackList() {
           })
         }
       </div>
-    </>
+    </div>
   )
 }
 
