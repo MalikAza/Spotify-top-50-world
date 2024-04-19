@@ -17,10 +17,25 @@
   left: 0;
   width: 100%;
   z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.home header > div {
+  flex-grow: unset;
+  width: unset;
 }
 
 .home header h1 {
   margin: 0;
+}
+
+.home header form {
+  padding-right: unset;
 }
 
 /* ===== V LOADING ANIMATION V ===== */
@@ -136,6 +151,20 @@
 @media (min-width: 768px) {
   .track {
     width: 15vw;
+  }
+
+  .home header {
+    flex-direction: row;
+    gap: unset;
+  }
+
+  .home header > div {
+    flex-grow: 0.25;
+    width: 0;
+  }
+
+  .home header form {
+    padding-right: 40px;
   }
 }
 
