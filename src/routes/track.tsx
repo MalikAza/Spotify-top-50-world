@@ -7,7 +7,7 @@ function Track() {
   const { state } = useLocation()
   const track: SpotifyTrackModel = state.track
   return (
-    <div className="album-page">
+    <div className="track-page">
       <h1>{track.name}</h1>
       <iframe
         style={{border: 'none', borderRadius: '14px'}}
@@ -18,8 +18,8 @@ function Track() {
         loading="lazy"
         title="Spotify Track Embed"
       />
-      <div className="album-page-infos">
-        <p className="album-page-artists-names">Artist(s): 
+      <div className="track-page-infos">
+        <p className="track-page-artists-names">Artist(s): 
         {
           track.artists.map((artist, index) => {
             return (

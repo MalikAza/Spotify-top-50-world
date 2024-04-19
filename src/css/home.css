@@ -96,7 +96,7 @@
   min-height: 100vh;
 }
 
-.album-list, .track-list {
+.track-list {
   margin: 0, auto;
   display: flex;
   flex-direction: row;
@@ -116,7 +116,7 @@
   opacity: 1;
 }
 
-.album, .track {
+.track {
   cursor: pointer;
   background: none;
   border: none;
@@ -130,30 +130,30 @@
   flex-direction: column;
 }
 
-.album:hover, .track:hover {
+.track:hover {
   transform: translateY(-0.521vw);
 }
 
-.album > a, .track > a {
+.track > a {
   flex-grow: 1;
 }
 
-.album a, .track a {
+.track a {
   text-decoration: none;
 }
 
-.album p, .track p {
+.track p {
   margin: 5px 0;
 }
 
-.album-img, .album-page-img {
+.album-img, .track-page-img {
   height: 15vw;
   border-radius: 1.042vw;
   box-shadow: 0px 5px 10px lightslategray;
   pointer-events: none;
 }
 
-.album-name, .artists-names, .track-name {
+.artists-names, .track-name {
   color: black;
   text-align: start;
   overflow-wrap: break-word;
@@ -175,20 +175,20 @@
   text-decoration: underline;
 }
 
-/* ===== ALBUM PAGE ===== */
+/* ===== TRACK PAGE ===== */
 
-.album-page {
+.track-page {
   margin: 1%;
   padding-top: 1.352vw;
   justify-content: center;
   text-align: center;
 }
 
-.album-page-img {
+.track-page-img {
   text-align: center;
 }
 
-.album-page-infos {
+.track-page-infos {
   width: 20vw;
   margin: auto;
 }
