@@ -5,10 +5,12 @@
 }
 
 .home h1 {
-  margin: 20px 0;
+  padding: 20px 0;
+  margin: 0;
   text-align: center;
   font-family: 'Comfortaa', cursive;
   color: rgb(58, 121, 62);
+  backdrop-filter: blur(10px);
 
   position: fixed;
   top: 0;
