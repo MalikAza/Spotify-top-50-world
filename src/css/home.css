@@ -4,7 +4,7 @@
   margin: 0;
 }
 
-.home h1 {
+.home header {
   padding: 20px 0;
   margin: 0;
   text-align: center;
@@ -17,6 +17,10 @@
   left: 0;
   width: 100%;
   z-index: 1;
+}
+
+.home header h1 {
+  margin: 0;
 }
 
 /* ===== V LOADING ANIMATION V ===== */

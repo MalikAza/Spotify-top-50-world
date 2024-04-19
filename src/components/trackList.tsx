@@ -3,13 +3,18 @@ import axiosInstance from "../services/axiosInstance"
 import SpotifyItem from "../models/spotifyItemModel"
 import SpotifyTrackModel from "../models/spotifyTrackModel"
 import { Link } from "react-router-dom"
+import SpotifyFetchedAlbumModel from "../models/spotifyFetchedAlbumModel"
 
-function TrackList() {
+type Props = {
+  setAlbumData: React.Dispatch<React.SetStateAction<SpotifyFetchedAlbumModel|undefined>>
+}
+
+function TrackList({setAlbumData}: Props) {
   const [albumDataTracks, setAlbumDataTracks] = useState<SpotifyItem['track'][]>([])
   const [tracks, setTracks] = useState<SpotifyTrackModel[]>([])
   const [isLoaded, setIsLoaded] = useState(false)
 
-  async function getAlbumDataTracks() {
+  const getAlbumDataTracks = useCallback(async() => {
     const token = sessionStorage.getItem('spotify_token')
     const URL = 'https://api.spotify.com/v1/playlists/37i9dQZEVXbMDoHDwVN2tF'
     const CONFIG = {
@@ -20,12 +25,16 @@ function TrackList() {
 
     try {
       const response = await axiosInstance.get(URL, CONFIG)
+
+      const albumData: SpotifyFetchedAlbumModel = response.data
+      setAlbumData(albumData)
+
       const albumDataTracks = response.data.tracks.items.map((item: SpotifyItem) => item.track)
       setAlbumDataTracks(albumDataTracks)
     } catch (error) {
       console.error(error)
     }
-  }
+  }, [setAlbumData])
 
   const getTracks = useCallback(async () => {
     const token = sessionStorage.getItem('spotify_token')
@@ -50,7 +59,7 @@ function TrackList() {
 
   useEffect(() => {
     getAlbumDataTracks()
-  }, [])
+  }, [getAlbumDataTracks])
 
   useEffect(() => {
     if (albumDataTracks.length > 0) { getTracks() }
@@ -63,35 +72,36 @@ function TrackList() {
   }, [tracks])
 
   return (
-    <div className={`track-container ${isLoaded ? 'loaded': ''}`}>
-      <div className="loading">
-        <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+    <React.Fragment>
+      <div className={`track-container ${isLoaded ? 'loaded': ''}`}>
+        <div className="loading">
+          <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+        </div>
+        <div className="track-list">
+          {
+            tracks.map(track => {
+              return (
+                <div className="track" key={track.id}>
+                  <Link to={`tracks/${track.id}`} state={{track}}>
+                    <img src={track.album.images[0].url} alt={track.album.name} className="album-img" />
+                    <p className="track-name">{track.name}</p>
+                  </Link>
+                  <p className="artists-names"> {track.artists.map((artist, index) => {
+                    return (
+                      <React.Fragment key={artist.id}>
+                        <Link to={`artists/${artist.id}`} state={{artist}} className="artist-link">{artist.name}</Link>
+                        {index < track.artists.length-1 && <span>, </span>}
+                      </React.Fragment>
+                    )
+                  })}
+                  </p>
+                </div>
+              )
+            })
+          }
+        </div>
       </div>
-
-      <div className="track-list">
-        {
-          tracks.map(track => {
-            return (
-              <div className="track" key={track.id}>
-                <Link to={`tracks/${track.id}`} state={{track}}>
-                  <img src={track.album.images[0].url} alt={track.album.name} className="album-img" />
-                  <p className="track-name">{track.name}</p>
-                </Link>
-                <p className="artists-names"> {track.artists.map((artist, index) => {
-                  return (
-                    <React.Fragment key={artist.id}>
-                      <Link to={`artists/${artist.id}`} state={{artist}} className="artist-link">{artist.name}</Link>
-                      {index < track.artists.length-1 && <span>, </span>}
-                    </React.Fragment>
-                  )
-                })}
-                </p>
-              </div>
-            )
-          })
-        }
-      </div>
-    </div>
+    </React.Fragment>
   )
 }
 
